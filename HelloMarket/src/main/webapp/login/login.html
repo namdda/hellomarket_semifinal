@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안녕마켓 : 로그인</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <link href="../css/login01.css" rel="stylesheet">
+    <link href="../css/login02.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div id="__next">˜
+        <div class="login_box auth_common_box">
+            <div class="title"><span class="title_text"> 로그인</span></div>
+            <div class="auth_form_box">
+                <form method="post" action="loginAction.jsp">
+                    <div class="phone_and_email_area">
+                   		 <input type="email" value="" class="phone_and_email_login" placeholder="아이디(이메일)" name="userId" id="userid" autocomplete="email" onfocus="errorEmail()">
+                    </div>
+                    <div class="error_msg" style="display: none;">이메일 주소를 확인해주세요.</div>
+                    <div class="login_password_input_area password_box"><input type="password" class="password_input"
+                            value="" placeholder="비밀번호" name="userPass" id="userpw" autocomplete="password">
+                        <div class="password_icon"><img
+                                src="../img/ico_join_pw_off.png" alt="비밀번호 아이콘"
+                                width="20" height="16"></div>
+                    </div>
+                    <div class="login_checkbox_area"><label
+                            class="feature_option feature_option_checkbox login_id_option">아이디 저장<div
+                                class="feature_option_checkbox_indicator"></div></label><label
+                            class="feature_option feature_option_checkbox">로그인 상태유지<div
+                                class="feature_option_checkbox_indicator"></div></label></div>
+
+                    <br>
+                    <div class="login_find_area"><span class="re_password"><a class="re_password_btn"
+                                href="/help/id?continue_url=https%3A%2F%2Fwww.hellomarket.com%2F">아이디찾기</a></span><span
+                            class="gap">|</span><span class="re_password"><a class="re_password_btn"
+                                href="/help/password?continue_url=https%3A%2F%2Fwww.hellomarket.com%2F">비밀번호찾기</a></span>
+                    </div>
+                    <button type="submit" class="signup_btn" onclick="return checkForm()">로그인</button>
+                </form>
+                <div class="sns_login_area">
+                    <hr class="line" color="#e8ebed">
+                    <div class="txt_box"><span class="txt">간편로그인</span></div>
+                    <div class="sns_login_button_box">
+                        <ul class="sns_login_button_list">
+                            <li><img src="../img/btn_login_naver_n.png"
+                                    alt="네이버 로그인" class="login_btm_fb_icon"></li>
+                            <li><img src="../img/btn_login_kakaotalk_n.png"
+                                    alt="카카오 로그인" class="login_btm_fb_icon"></li>
+                            <li><img src="../img/btn_login_facebook_n.png"
+                                    alt="페이스북 로그인" class="login_btm_fb_icon"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sign_text_url"><span>처음이신가요?</span><span><a
+                        href="../join/signup.html"><button
+                            class="sign_text_btn">회원가입</button></a></span></div>
+        </div>
+    </div>
+
+    <div class="sweet-overlay" tabindex="-1" style="opacity: -0.02; display: none;"></div>
+    <div class="sweet-alert hideSweetAlert" data-custom-class="" data-has-cancel-button="false" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true" data-animation="pop" data-timer="null" style="display: none; margin-top: -80px; opacity: 0;">
+        <div class="sa-icon sa-error" style="display: none;">
+            <span class="sa-x-mark">
+                <span class="sa-line sa-left"></span>
+                <span class="sa-line sa-right"></span>
+            </span>
+        </div>
+        <div class="sa-icon sa-warning" style="display: none;">
+            <span class="sa-body"></span>
+            <span class="sa-dot"></span>
+        </div>
+        <div class="sa-icon sa-info" style="display: none;"></div>
+        <div class="sa-icon sa-success" style="display: none;">
+            <span class="sa-line sa-tip"></span>
+            <span class="sa-line sa-long"></span>
+    
+            <div class="sa-placeholder"></div>
+            <div class="sa-fix"></div>
+        </div>
+        <div class="sa-icon sa-custom" style="display: none;"></div>
+        <h2></h2>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">Cancel</button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" style="display: inline-block; background-color: rgb(4, 132, 246); box-shadow: rgba(4, 132, 246, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">확인</button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/signup.js"></script>
+</body>

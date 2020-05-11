@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안녕마켓 : 회원가입</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="../css/signup.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="__next">
+        <div class="sign_box auth_common_box">
+            <div class="title"><span class="title_text">회원가입</span></div>
+            <div class="auth_form_box">
+                <form method="post" action="signup_action.jsp">
+                    <div class="email_title">아이디(이메일)</div>
+                    <div class="email_area"><input type="email" value="" class="email_sign" placeholder="이메일 주소 입력"
+                            name="userId" id="userid"></div>
+                    <div class="password_title">비밀번호</div>
+                    <div class="password_box"><input type="password" class="password_input" value=""
+                            placeholder="영문, 숫자, 특수문자 포함 6~15자" name="userPass" id="userpw">
+                        <div class="password_icon"><img
+                                src="../img/ico_join_pw_off.png" alt="비밀번호 아이콘"
+                                width="20" height="16"></div>
+                    </div>
+                    <div class="terms_text">가입시&nbsp;<a href="../terms.html" target="blank"
+                            class="under_link">이용약관</a>&nbsp;및&nbsp;<a href="../protection.html"
+                            target="blank" class="under_link">개인정보 취급방침</a>,&nbsp;<a href = "../location.href"target="blank" class="under_link">위치정보제공</a>에
+                        동의합니다.</div>
+                    <div class="bottom login_btn"><button class="login_btn" type="submit" onclick=" return checkForm()">
+                        회원가입</button></div>
+                    <button type="button" class="signup_btn" onclick="location.href='../login/login.html'" >로그인</button>
+                </form>
+            </div>
+        </div>
+    </div>
+ </body>
+ <script src="../js/signup.js"></script>
+ </html>

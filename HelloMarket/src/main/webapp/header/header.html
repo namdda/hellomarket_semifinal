@@ -1,0 +1,210 @@
+<!-- 제이쿼리 소스 임포트 해주셔야합니다. -->
+<header class="">
+    <div class="bar hide"></div>
+    <section class="header_top">
+        <div class="header_logo header_logo_s">
+            <div class="log_box"><a href="/"><img src="../img/안녕마켓메인.png" class="logo" alt="헬로마켓"><img
+                        src="https://ccimage.hellomarket.com/web/2020/common/img_title_logo.png"
+                        class="mobile_logo" alt="헬로마켓"></a></div>
+            <div class="btn_box">
+                <div class="nick"><img src="../img/img_default_profile_60x60.png" width="36" height="36"
+                        alt="n14474743의 프로필 사진" class="profile_img"><span class="nick_title">n14474743님</span>
+                </div>
+                <div class="notification_box"><img src="../img/btn_title_hellotalk.png" alt="채팅 아이콘"
+                        class="chat">
+                    <div class="chat_cnt"></div><a href="https://account.hellomarket.com/alarms"
+                        target="_blank"><img src="../img/btn_title_notification.png" alt="알림목록 아이콘"
+                            class="alram"></a>
+                </div>
+            </div>
+            <div style="display: none;">
+                <div class="gnb_my_lyr test_type"><a href="/m/level.hm">
+                        <div class="gnb_my_member_level"><img class="gnb_my_member_level_img"
+                                src="https://ccimage.hellomarket.com/web/2019/member/img_level_1_x2.png"
+                                alt="뱃지 이미지">
+                            <div><span class="level_description">나의등급</span><span
+                                    class="level_description_name">화이트</span></div>
+                        </div>
+                    </a>
+                    <ul class="gnb_my_list"><a href="/s/@15979427?type=item">
+                            <li class="gnb_my_list_first">내상점</li>
+                        </a><a href="/m/hellopay.hm?type=seller&amp;status=open">
+                            <li>헬로페이 거래내역</li>
+                        </a><a href="/m/wallet/history">
+                            <li>전자지갑 · 결제관리</li>
+                        </a><a href="/m/coupon">
+                            <li>할인쿠폰</li>
+                        </a><a href="/m/order/auto/sales/list.hm">
+                            <li>일반 결제내역</li>
+                        </a><a href="/m/shipping.hm?type=sender">
+                            <li>배송관리</li>
+                        </a>
+                        <li class="gnb_my_list_last">로그아웃</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header_search" id="tebas">
+                <div class="com_search_box">
+                    <div>
+                        <div><input type="text" class="com_search" placeholder="어떤 상품을 찾고 계세요?" value=""
+                                style="border-bottom: 1px solid rgb(158, 164, 170);">
+                            <div class="search_icon_box">
+                                <div class="search_icon">
+                                    <div class="search_circle" style="border-color: rgb(158, 164, 170);"></div>
+                                    <div class="search_rectangle" style="border-color: rgb(158, 164, 170);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w_search_modal" style="display: none;">
+                                <div>
+                                    <div class="search_contents">
+                                        <div class="search_recent">
+                                            <p>최근 검색</p>
+                                            <ul>
+                                                <div class="search_empty">우리조 1등 </div>
+                                            </ul>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="search_popular">
+                                            <p>인기 키워드</p>
+                                            <ul>
+                                                <li class=""><span>1</span> 눈누난나</li>
+                                                <li class=""><span>2</span> ~@~@~@</li>
+                                                <li class=""><span>3</span> !@#!@$</li>
+                                                <li class=""><span>4</span> css 경로는 알아서</li>
+                                                <li class=""><span>5</span> 메인페이지 누구함?</li>
+                                                <li class=""><span>6</span> 프린터</li>
+                                                <li class=""><span>7</span> jbl</li>
+                                                <li class=""><span>8</span> 키보드</li>
+                                                <li class=""><span>9</span> 에어컨</li>
+                                                <li class="last_child"><span>10</span> 안마기</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search_close">
+                                    <div>닫기</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="header_cat">
+        <div class="header_wrapper">
+            <div>
+                <div class="btn_box header_wrapper_sub" id="open_cat">
+                    <input type="checkbox" class="cat_checkbox chkbox1">
+                    <i class="arrow"></i>
+                    <span for="cat_checkbox" class="selectbox">카테고리</span>
+                    <div style="display: none;" id="category_display">
+                        <div class="cat_list_box left_slidein">
+                            <div class="mobile_login_wrapper">
+                                <div class="btn_close_wrapper"><input type="checkbox"
+                                        class="close_checkbox chkbox1" id="btnClose" name="btnClose"><button
+                                        type="button" class="btn_close" for="btnClose">닫기</button></div>
+                                <div class="member_info"><a class="nick" href="/s/@15979427?tab=item">
+                                        <div class="profile_wrapper"><img
+                                                src="https://ccimage.hellomarket.com/web/2017/common/img_default_profile_60x60.png"
+                                                alt="n15979427의 프로필 사진" id="loginProfileImg"
+                                                class="profile_img"></div>
+                                        <div class="member_info_txt">n15979427</div>
+                                    </a></div>
+                            </div>
+                            <div class="mobile_nav">
+                                <div class="cat_avt">
+                                    <ul class="cat_avt_top">
+                                        <li><a href="/search?sort=current">최신순 &gt;</a></li>
+                                        <li><a>가까운순 &gt;</a></li>
+                                    </ul>
+                                </div>
+                                <ul class="cat_list mobile_cat_list">
+                                    <li class="category"><a class="cat_link mobile_cat_link"
+                                            href="/m/hellopay.hm?type=seller&amp;status=open"><span
+                                                class="category_text">헬로페이 거래내역</span></a></li>
+                                    <li class="category"><a class="cat_link mobile_cat_link"
+                                            href="/m/wallet/history"><span class="category_text">전자지갑 ·
+                                                결제관리</span></a></li>
+                                    <li class="category"><a class="cat_link mobile_cat_link"
+                                            href="/m/order/auto/sales/list.hm"><span class="category_text">일반
+                                                결제내역</span></a></li>
+                                    <li class="category"><a class="cat_link mobile_cat_link"
+                                            href="/m/shipping.hm?type=sender"><span
+                                                class="category_text">배송관리</span></a></li>
+                                    <li class="category"><a class="cat_link mobile_cat_link"
+                                            href="/m/coupon"><span class="category_text">할인쿠폰</span></a></li>
+                                </ul>
+                                <div class="mobile_category_line"></div>
+                                <ul class="cat_list mobile_cat_list_none">
+                                    <li class="cat_space"><a></a></li>
+                                    <li class="cat_space"><a></a></li>
+                                    <li class="cat_space"><a></a></li>
+                                    <li class="cat_space"><a></a></li>
+                                    <li class="cat_space"><a></a></li>
+                                    <li class="cat_space"><a></a></li>
+                                    <li class="category"><a class="cat_link"
+                                            href="/search?category=HAK0000"><img
+                                                src="https://ccimage.hellomarket.com/web/2018/common/category/cate_hak0000.png"
+                                                alt="휴대폰, 테블릿" class="category_img"><span
+                                                class="category_text">휴대폰, 테블릿</span></a></li>
+                                    <li class="category"><a class="cat_link"
+                                            href="/search?category=HAD0000"><img
+                                                src="https://ccimage.hellomarket.com/web/2018/common/category/cate_had0000.png"
+                                                alt="뷰티" class="category_img"><span
+                                                class="category_text">뷰티</span></a></li>
+                                    <li class="category"><a class="cat_link"
+                                            href="/search?category=HAA0000"><img
+                                                src="https://ccimage.hellomarket.com/web/2018/common/category/cate_haa0000.png"
+                                                alt="여성의류" class="category_img"><span
+                                                class="category_text">여성의류</span></a></li>
+                                    <li class="category"><a class="cat_link"
+                                            href="/search?category=HAC0000"><img
+                                                src="https://ccimage.hellomarket.com/web/2018/common/category/cate_hac0000.png"
+                                                alt="신발,가방,잡화" class="category_img"><span
+                                                class="category_text">신발,가방,잡화</span></a></li>
+                                    <li class="category_blank"></li>
+                                    <li class="category_blank"></li>
+                                    <li class="category_blank"></li>
+                                    <li class="category_blank"></li>
+                                    <li class="category_blank"></li>
+                                    <li class="category_blank"></li>
+                                    <li class="category_blank"></li>
+                                </ul>
+                                <ul class="mobile mobile_sub_category">
+                                    <li><a href="/community/list.hm?category=DAC0002">이벤트</a><i
+                                            class="arrow right_arrow"></i></li>
+                                    <li><a href="/community/list.hm?category=DAC0004">헬마뉴스</a><i
+                                            class="arrow right_arrow"></i></li>
+                                    <li><a href="/help/faq.hm">헬프센터</a><i class="arrow right_arrow"></i></li>
+                                    <li><a href="../ad/index.html" target="_blank"
+                                            rel="noopener noreferrer">광고센터</a><i class="arrow right_arrow"></i>
+                                    </li>
+                                </ul>
+                                <ul class="logout_wrapper">
+                                    <li>
+                                        <div class="btn logout">로그아웃</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sellimg_sub_box header_wrapper_sub">
+                <div class="selling_bot"><img src="../img/ico_sell_camera_x2.png" alt="판매하기 이미지"
+                        class="selling_bot_img"><span class="selling_bot_text">판매하기</span></div>
+            </div>
+            <div class="link_box header_wrapper_sub">
+                <ul>
+                    <li><a href="/community/list.hm?category=DAC0002&amp;status=begin">이벤트</a></li>
+                    <li><a href="/help/faq.hm">헬프센터</a></li>
+                    <li><a href="https://ad.hellomarket.com" target="_blank" rel="noopener noreferrer"><img
+                                src="../img/ico_category_AD_x2.png" alt="광고센터 아이콘이미지">광고센터</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</header>
+<!-- 자바스크립트 소스링크  이쪽에 넣으세요 ~  -->
