@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "User.*" %>
-<%@page import="Board.MyBoardDTO" %>
-<%@page import="Board.MyBoardDAO" %>
+<%@page import="Board.BoardDTO" %>
+<%@page import="Board.BoardDAO" %>
 <%@page import ="zzim.*" %>
 <%@ page import = "Comment.CommentDAO" %>
 <%@ page import = "Comment.CommentDTO" %>
@@ -12,9 +12,9 @@
 <%
 	String temp = request.getParameter("p_idx");
 	int p_idx = Integer.parseInt(temp);
-	MyBoardDAO myboardDAO = new MyBoardDAO();
-	MyBoardDTO boardDTO = new MyBoardDTO();
-	boardDTO = myboardDAO.showThisItem(p_idx);
+	BoardDAO boardDAO = new BoardDAO();
+	BoardDTO boardDTO = new BoardDTO();
+	boardDTO = boardDAO.showThisItem(p_idx);
 	
 	
 	String firstCat = null;
@@ -96,7 +96,7 @@
 			uploaderLevelName="브론즈";
 		}
 	 String uploaderNick = boardDTO.getUserNick();
-	 userItemCnt = myboardDAO.showUserItemCnt(uploaderNick);
+	 userItemCnt = boardDAO.showUserItemCnt(uploaderNick);
 	 UserDAO userDAO = new UserDAO();
 	 uploaderLevel = userDAO.getUser_level(uploaderNick);
 	 uploaderIdx = userDAO.getUserIdx(uploaderNick);
@@ -512,7 +512,7 @@
 												            </li>
 												         
 												            <li><a href="/item/form.hm?idx=166099896" >
-												                    <div class="modify_box_right_border"><img src="https://ccimage.hellomarket.com/web/2019/item/ico_myproduct_edit.png" alt="수정 이미지" class="modify_box_right_img">
+												                    <div class="modify_box_right_border" onclick="/HelloMarket/modify/modify.jsp?p_idx=<%= p_idx %> ><img src="https://ccimage.hellomarket.com/web/2019/item/ico_myproduct_edit.png" alt="수정 이미지" class="modify_box_right_img">
 												                        <div class="modify_box_right_text">수정</div> <!-- onclick="/HelloMarket/modify/modify.jsp?id=${board.id}" 지금 생각해보니까 어느 페이지 수정하는건지 모르니까 그걸 get 방식으로 받아야할거 같은데...  -->
 												                    </div>
 												                </a></li>

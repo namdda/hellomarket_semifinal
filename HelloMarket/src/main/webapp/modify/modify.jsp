@@ -4,6 +4,13 @@
 <jsp:setProperty property="*" name="MyboardDTO"/>
 <jsp:useBean id="myboardDAO" class="Board.MyBoardDAO"/>
 <%@ page import ="User.*" %>
+<%
+
+//int p_idx = request.getParameter("p_idx");
+String temp = request.getParameter("p_idx");
+int p_idx = Integer.parseInt(temp);
+System.out.println(p_idx);
+%>
     
 <!DOCTYPE html>
 <html lang="ko">

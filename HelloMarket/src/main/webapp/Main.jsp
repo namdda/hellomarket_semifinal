@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "User.*" %>
-<%@page import="Board.MyBoardDTO" %>
-<%@page import="Board.MyBoardDAO" %>
+<%@page import="Board.BoardDTO" %>
+<%@page import="Board.BoardDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -314,9 +314,9 @@
       </div>
 
 <%
-	List<MyBoardDTO> myboardDTO = new ArrayList<MyBoardDTO>();
-	MyBoardDAO myboardDAO =new MyBoardDAO();
-	myboardDTO = myboardDAO.showAllItem();
+	List<BoardDTO> boardDTO = new ArrayList<BoardDTO>();
+	BoardDAO boardDAO =new BoardDAO();
+	boardDTO = boardDAO.showAllItem();
 %>
 
       <!-- 리스트 메인 에리어-->
@@ -329,7 +329,7 @@
               <div class="infinite-scroll-component " style="height: auto; overflow: auto;">
                 <ul class="mian_row">
 <%
-	for(MyBoardDTO b : myboardDTO){
+	for(BoardDTO b : boardDTO){
 %>
 	<li class="main_col_4" style="height: auto;">
 		<a class="card card_list" href="/HelloMarket/item/item.jsp?p_idx=<%=b.getP_idx()%>">

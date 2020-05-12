@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="myboardDTO" class="Board.MyBoardDTO"/>
-<jsp:setProperty property="*" name="MyboardDTO"/>
-<jsp:useBean id="myboardDAO" class="Board.MyBoardDAO"/>
+<jsp:useBean id="boardDTO" class="Board.BoardDTO"/>
+<jsp:setProperty property="*" name="boardDTO"/>
+<jsp:useBean id="boardDAO" class="Board.BoardDAO"/>
 <%@ page import ="User.*" %>
     
 <!DOCTYPE html>
@@ -466,7 +466,7 @@
                 <div>상품 등록</div>
               </div>
             </div>
-   <form method="post" action="my_sell_ok.jsp" enctype="multipart/form-data">
+   <form method="post" action="sell_ok.jsp" enctype="multipart/form-data">
             <div class="regist_box">
               <div class="description">
                 <dl id="mainDiv">
