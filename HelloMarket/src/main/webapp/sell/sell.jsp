@@ -240,34 +240,25 @@
         <div class="header_logo header_logo_s">
           <div class="log_box"><img src="../img/MarketMain.png" class="logo" alt="헬로마켓"></div>
 <%
-	if(userId == null ){
+   if(userId == null ){
 %>
-          <div class="btn_box">
-          <a class="btn_login_box">
-          <button class="login_btn">로그인</button>
-          </a><a class="btn_signup_box"><button class="signup_btn">회원가입</button></a><a href="/msearch">
-              <div class="notification_box"></div>
-            </a></div>
+   <script>
+   		alert('로그인을 먼저 해주세요.');
+   		location.href="/HelloMarket/login/login.html";
+   </script>
 <%
-	}else{
+   }else{
 %>
-		<div class="btn_box">
-    <div class="nick">
-    	<img src="/HelloMarket/img/img_default_profile_60x60.png" width="36" height="36" alt="<%=userNick %>의 프로필 사진" class="profile_img">
-    	<span class="nick_title"><%=userNick %>님</span>
-    	</div>
-    <div class="notification_box">
-    	<a href="" target="_blank" rel="noopener noreferrer">
-    		<img src="/HelloMarket/img/btn_title_hellotalk.png" alt="채팅 아이콘" class="chat">
-        	<div class="chat_cnt">4</div>
-        </a>
-        <a id ="alarm_btn" target="_blank">
-        	<img src="/HelloMarket/img/btn_title_notification.png" alt="알림목록 아이콘" class="alram">
-            <div class="alram_cnt"><%=alarm_count%></div>
+   <div class="btn_box">
+       <div class="nick"><img src="https://ccimage.hellomarket.com/web/2017/common/img_default_profile_60x60.png" width="36" height="36" alt="n15979427의 프로필 사진" class="profile_img"><span class="nick_title"><%=userNick %>님</span></div>
+         <div class="notification_box"><a href="https://account.hellomarket.com/messages" target="_blank" rel="noopener noreferrer"><img src="https://ccimage.hellomarket.com/web/2019/common/btn_title_hellotalk.png" alt="채팅 아이콘" class="chat">
+        <div class="chat_cnt">4</div>
+        </a><a href="https://account.hellomarket.com/alarms" target="_blank"><img src="https://ccimage.hellomarket.com/web/2019/common/btn_title_notification.png" alt="알림목록 아이콘" class="alram">
+        <div class="alram_cnt"><%= alarm_count %></div>
         </a></div>
-</div>
+   </div>
 <% 
-	}
+   }
 %>
           <div style="display: none;">
             <div class="gnb_my_lyr test_type">

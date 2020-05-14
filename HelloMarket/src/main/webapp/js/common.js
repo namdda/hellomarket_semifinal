@@ -1,4 +1,4 @@
-$(function(){
+
     const nick_title = $(".nick");
     const main_btn = $(".log_box");
 //    const $logout_btn = $(".gnb_my_list_last");
@@ -103,8 +103,18 @@ $(function(){
     	location.href = "/HelloMarket/mystore/coupon.jsp"
     	event.stopImmedidatePropagation();
     })
-
+    if($(".com_search").on('keydown',function(){
+    	searchItem();
+    }))
     
+    function searchItem(){
+		const search = $(".com_search").val();
+	    let keyCode = window.event.keyCode;
+	  	if(keyCode == 13){
+	       	location.href="/HelloMarket/search/search.jsp?category="+search
+	           	}
+    }                     
+                 
     
 
    
@@ -119,4 +129,3 @@ $(function(){
         alarm_open()
     }
     init();
-})

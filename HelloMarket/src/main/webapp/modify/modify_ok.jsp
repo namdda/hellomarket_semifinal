@@ -12,6 +12,8 @@
 
 <c:set var="rows" value="${boardDAO.updateBoard(boardDTO)}" />
 
+  int num = boardDAO.registBoard(boarddto);
+
 <c:if test="${rows >=1}">
 
 	<script>

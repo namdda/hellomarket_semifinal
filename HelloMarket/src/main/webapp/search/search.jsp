@@ -1,20 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import ="Board.*" %>
+<%@ page import ="java.util.ArrayList" %>
+<%@ page import = "java.util.List" %>
 
-    pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String category = request.getParameter("category");	
-	System.out.println(category);
+	String subCat1 = "";
+	String subCat2 = "";
+	String subCatCode1 ="";
+	String subCatCode2 ="";
 	String catName = "";
-	if(category.equals("HAK0000")){
-		catName = "휴대폰,태블릿";
-	}else if(category.equals("HAK00001")){
-		catName = "뷰티";
-	}else if(category.equals("HAK0002")){
-		catName = "여성의류";
-	}else {
-		catName = "신발,가방,잡화";
+	String category = "";
+	
+	BoardDTO boardDTO = new BoardDTO();
+	BoardDAO boardDAO = new BoardDAO();
+	List<BoardDTO> board = new ArrayList<BoardDTO>();
+	
+	if(request.getParameter("category")!=null){
+		category = request.getParameter("category");	
+		
+		if(category.equals("HAC0000")){
+			catName = "휴대폰,태블릿";
+			subCat1 ="휴대폰";
+			subCat2 ="태블릿";
+			if(subCat1.equals("휴대폰")){
+				subCatCode1 = "HAC0010";
+			}
+			if(subCat2.equals("태블릿")){
+				subCatCode2 = "HAC0020";
+			}
+		}else if(category.equals("HAC0001")){
+			catName = "뷰티";
+			subCat1 ="헤어";
+			subCat2 ="미용";
+			if(subCat1.equals("헤어")){
+				subCatCode1 = "HAC0011";
+			}
+			if(subCat2.equals("미용")){
+				subCatCode2 = "HAC0021";
+			}
+		}else if(category.equals("HAC0002")){
+			catName = "여성의류";
+			subCat1 ="여성상의";
+			subCat2 ="여성하의";
+			if(subCat1.equals("여성상의")){
+				subCatCode1 = "HAC0012";
+			}
+			if(subCat2.equals("여성하의")){
+				subCatCode2 = "HAC0022";
+			}
+		}else if(category.equals("HAC0003")){
+			catName = "신발,가방,잡화";
+			subCat1 ="신발";
+			subCat2 ="가방,잡화";
+			if(subCat1.equals("신발")){
+				subCatCode1 = "HAC0013";
+			}
+			if(subCat2.equals("가방,잡화")){
+				subCatCode2 = "HAC0023";
+			}
+		}else if(category.equals("HAC0010")){
+			catName ="휴대폰";
+		}else if(category.equals("HAC0020")){
+			catName ="태블릿";
+		}else if(category.equals("HAC0011")){
+			catName ="헤어";
+		}else if(category.equals("HAC0021")){
+			catName ="미용";
+		}else if(category.equals("HAC0012")){
+			catName ="여성상의";
+		}else if(category.equals("HAC0022")){
+			catName ="여성하의";
+		}else if(category.equals("HAC0013")){
+			catName ="신발";
+		}else if(category.equals("HAC0023")){
+			catName ="가방,잡화";
+		}else {
+			catName = category;
+		}
+		board = boardDAO.showItemThisCat(category);
 	}
+	
+	
+	
+	
+	
+	
 
 %>
 <!DOCTYPE html>
@@ -26,11 +97,7 @@
   <link href="/HelloMarket/css/chunk.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   
-  <style>
-  	  .main_col_3{
-    	float:left;
-    }
-  </style>
+
 </head>
 
 <body>
@@ -155,7 +222,7 @@
 
 %>
 
-		<img class="gnb_my_member_level_img" src="img/img_level1_30.png">
+		<img class="gnb_my_member_level_img" src="/HelloMarket/img/img_level1_30.png">
 
 <% 
 
@@ -163,7 +230,7 @@
 
 %>
 
-		<img class="gnb_my_member_level_img" src="img/img_level2_30.png">
+		<img class="gnb_my_member_level_img" src="/HelloMarket/img/img_level2_30.png">
 
 <% 
 
@@ -171,7 +238,7 @@
 
 %>
 
-		<img class="gnb_my_member_level_img" src="img/img_level3_30.png">
+		<img class="gnb_my_member_level_img" src="/HelloMarket/img/img_level3_30.png">
 
 <% 
 
@@ -203,7 +270,7 @@
 
                 <div>
 
-                    <div><input onkeyup="filter()" type="text" id="value" placeholder="어떤 상품을 찾고 계세요?" style="border-bottom: 1px solid rgb(158, 164, 170);">
+                    <div><input type="text" id="value"  class="com_search" placeholder="어떤 상품을 찾고 계세요?" style="border-bottom: 1px solid rgb(158, 164, 170);">
 
                         <div class="search_icon_box">
 
@@ -357,27 +424,27 @@
 
                       <li class="cat_space"><a></a></li>
 
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0000"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0000"><img
 
-                            src="img/cate_hak0000.png" alt="휴대폰, 테블릿" class="category_img"><span
+                            src="/HelloMarket/img/cate_hak0000.png" alt="휴대폰, 테블릿" class="category_img"><span
 
                             class="category_text">휴대폰, 테블릿</span></a></li>
 
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0001"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0001"><img
 
-                            src="img/cate_had0000.png" alt="뷰티" class="category_img"><span
+                            src="/HelloMarket/img/cate_had0000.png" alt="뷰티" class="category_img"><span
 
                             class="category_text">뷰티</span></a></li>
 
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0002"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0002"><img
 
-                            src="img/cate_haa0000.png" alt="여성의류" class="category_img"><span
+                            src="/HelloMarket/img/cate_haa0000.png" alt="여성의류" class="category_img"><span
 
                             class="category_text">여성의류</span></a></li>
 
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0003"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0003"><img
 
-                            src="img/cate_hac0000.png" alt="신발,가방,잡화" class="category_img"><span
+                            src="/HelloMarket/img/cate_hac0000.png" alt="신발,가방,잡화" class="category_img"><span
 
                             class="category_text">신발,가방,잡화</span></a></li>
 
@@ -397,19 +464,7 @@
 
                     </ul>
 
-                    <ul class="mobile mobile_sub_category">
-
-                      <li><a href="/community/list.hm?category=DAC0002">이벤트</a><i class="arrow right_arrow"></i></li>
-
-                      <li><a href="/community/list.hm?category=DAC0004">헬마뉴스</a><i class="arrow right_arrow"></i></li>
-
-                      <li><a href="/help/faq.hm">헬프센터</a><i class="arrow right_arrow"></i></li>
-
-                      <li><a href="./ad/index.html" target="_blank" rel="noopener noreferrer">광고센터</a><i
-
-                          class="arrow right_arrow"></i></li>
-
-                    </ul>
+                
 
                     <ul class="logout_wrapper">
 
@@ -467,7 +522,7 @@
 
             <div class="selling_bot"><img src="../img/ico_sell_camera_x2.png" alt="판매하기 이미지" class="selling_bot_img"><span
 
-                class="selling_bot_text"><a href="../Sell/Sell.jsp">판매하기</a></span></div>
+                class="selling_bot_text"><a href="/HelloMarket/sell/sell.jsp">판매하기</a></span></div>
 
           </div>
 
@@ -475,13 +530,8 @@
 
             <ul>
 
-              <li><a href="/community/list.hm?category=DAC0002&amp;status=begin">이벤트</a></li>
-
               <li><a href="/help/faq.html">헬프센터</a></li>
 
-              <li><a href="../ad/index.html" target="_blank" rel="noopener noreferrer"><img
-
-                    src="../img/ico_category_AD_x2.png" alt="광고센터 아이콘이미지">광고센터</a></li>
 
             </ul>
 
@@ -501,7 +551,7 @@
           <div class="breadcrumbs">
             <ul>
               <li><a>HOME</a></li>
-              <li>&gt; <a href="/HelloMarket/search/search.jsp?category=HAE0000"><%=catName %></a></li>
+              <li>&gt; <a href="/HelloMarket/search/search.jsp?category=<%=category%>"><%=catName %></a></li>
             </ul>
           </div>
           <div class="main_area">
@@ -514,75 +564,36 @@
                     </div>
                     <div class="category_sub"><span>
                         <ul class="category_sub_list">
-                          <li class=""><a href="/search?category=HAE0003&amp;page=1">신생아,유아의류</a></li>
-                          <li class=""><a href="/search?category=HAE0009&amp;page=1">아동의류</a></li>
-                          <li class=""><a href="/search?category=HAE0010&amp;page=1">유아동잡화</a></li>
-                          <li class=""><a href="/search?category=HAE0004&amp;page=1">유아동생활용품</a></li>
-                          <li class=""><a href="/search?category=HAE0011&amp;page=1">완구,인형</a></li>
-                          <li class=""><a href="/search?category=HAE0001&amp;page=1">임부복,출산용품</a></li>
+                          <li class=""><a href="/HelloMarket/search/search.jsp?category=<%=subCatCode1%>"><%=subCat1 %></a></li>
+                          <li class=""><a href="/HelloMarket/search/search.jsp?category=<%=subCatCode2%>"><%=subCat2 %></a></li>
+                         
                         </ul>
                       </span></div>
                   </div>
-                  <div class="search_filter no_padding">
-                    <div class="middle safe_middle">
-                      <ul><a href="/search?category=HAE0000&amp;page=1&amp;isEscrowOnly=true">
-                          <li><label class="feature_option feature_option_checkbox"><img
-                                src="https://ccimage.hellomarket.com/web/2019/search/img_filter_hellopay_txt_x2.png"
-                                alt="헬로페이 아이콘" class="hellopay_feature_icon" /><span
-                                class="hellopay_only_size">만 보기</span>
-                              <div class="feature_option_checkbox_indicator"></div>
-                            </label></li>
-                        </a></ul>
-                    </div>
-                    <div class="item_left_bottom"></div>
-                  </div>
+                  
                   <div class="search_filter">
                     <div class="title">상품상태</div>
                     <div class="middle">
                       <ul><a href="/search?category=HAE0000&amp;page=1">
                           <li><label class="feature_option feature_option_checkbox">전체<div
                                 class="feature_option_checkbox_indicator checked"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;usedType=NotUsed">
+                        </a><a href="/HelloMarket/search/search.jsp?category=<%=category%>&usedType=NotUsed">
                           <li><label class="feature_option feature_option_checkbox">새상품<div
                                 class="feature_option_checkbox_indicator"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;usedType=AsNew">
+                        </a><a href="/HelloMarket/search/search.jsp?category=<%=category%>&usedType=AsNew">
                           <li><label class="feature_option feature_option_checkbox">거의새것<div
                                 class="feature_option_checkbox_indicator"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;usedType=Secondhand">
+                        </a><a href="/HelloMarket/search/search.jsp?category=<%=category%>&usedType=SecondHand">
                           <li><label class="feature_option feature_option_checkbox">중고<div
                                 class="feature_option_checkbox_indicator"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;usedType=SomeFlaws">
+                        </a><a href="/HelloMarket/search/search.jsp?category=<%=category%>&usedType=SomeFlaw">
                           <li><label class="feature_option feature_option_checkbox">하자있음<div
                                 class="feature_option_checkbox_indicator"></div></label></li>
                         </a></ul>
                     </div>
                     <div class="item_left_bottom"></div>
                   </div>
-                  <div class="search_filter no_padding">
-                    <div class="title">거래종류</div>
-                    <div class="middle">
-                      <ul><a href="/search?category=HAE0000&amp;page=1">
-                          <li><label class="feature_option feature_option_checkbox">전체<div
-                                class="feature_option_checkbox_indicator checked"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;sellMethod=Sell">
-                          <li><label class="feature_option feature_option_checkbox">판매<div
-                                class="feature_option_checkbox_indicator"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;sellMethod=Freecycle">
-                          <li><label class="feature_option feature_option_checkbox">무료나눔<div
-                                class="feature_option_checkbox_indicator"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;sellMethod=Extra">
-                          <li><label class="feature_option feature_option_checkbox">덤<div
-                                class="feature_option_checkbox_indicator"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;sellMethod=Buy">
-                          <li><label class="feature_option feature_option_checkbox">삽니다<div
-                                class="feature_option_checkbox_indicator"></div></label></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;sellMethod=Contact">
-                          <li><label class="feature_option feature_option_checkbox">연락요망<div
-                                class="feature_option_checkbox_indicator"></div></label></li>
-                        </a></ul>
-                    </div>
-                    <div class="item_left_bottom"></div>
-                  </div>
+                  
                   <div class="search_filter no_padding">
                     <div class="middle safe_middle">
                       <ul><a href="/search?category=HAE0000&amp;page=1&amp;canBarter=true">
@@ -598,15 +609,7 @@
                 </div>
                 <section class="left_main">
                   <div class="tab_area biz_area">
-                    <ul class="tab_area_ul"><a href="/search?category=HAE0000&amp;page=1">
-                        <li class="active">전체</li>
-                      </a><a href="/search?category=HAE0000&amp;page=1&amp;type=norm">
-                        <li class="">개인</li>
-                      </a><a href="/search?category=HAE0000&amp;page=1&amp;type=biz">
-                        <li class="">전문</li>
-                      </a>
-                      <li class="last_li"></li>
-                    </ul>
+                    
                     <div class="tab_type_box"><a
                         href="/search?category=HAE0000&amp;page=1&amp;isEscrowOnly=true">
                         <div class="hellopay_only_tab"><label
@@ -625,19 +628,12 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="tab_type biz_type pc_type">
-                      <ul class="search_tab_type"><a
-                          href="/search?category=HAE0000&amp;page=1&amp;tabType=list">
-                          <li class="list"></li>
-                        </a><a href="/search?category=HAE0000&amp;page=1&amp;tabType=thumbnail">
-                          <li class="thumbnail active"></li>
-                        </a></ul>
-                    </div>
+                   
                     <div class="sort_filter biz_sort"><label for="sortTitle">최신순</label><select>
                         <option value="">최신순</option>
                         <option value="lowprice">저가순</option>
                         <option value="highprice">고가순</option>
-                        <option value="near">가까운순</option>
+                        
                       </select></div>
                   </div>
                   <div class="list_area">
@@ -647,283 +643,49 @@
                           style="height:auto;overflow:auto;-webkit-overflow-scrolling:touch;overflow-y:auto;overflow-x:hidden">
                           <ul class="mian_row auto_mian_row">
                           
-                            <li class="main_col_3" style="height:auto">
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/166632732?viewPath=search_list&amp;clickPath=search&amp;feedPosition=31">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2020/item/04/30/13/4349594_3180640_1.jpg?size=s4"
-                                            alt="120~130사이즈 아이옷" class="thumbnail_img" /><label data-index="0"
-                                            style="display:none">0</label></div>
-                                        <div class="dealer_text_position"><img
-                                            src="https://ccimage.hellomarket.com/web/2020/item/ico_badge_thumbnail_hellopay_x2.png"
-                                            alt="헬로페이 아이콘" style="width:43px;height:21px" /></div>
-                                      </div>
-                                    </div>
-                                    <div class="cont">
-                                      <div class="item_title">120~130사이즈 아이옷</div>
-                                      <div class="item_price">30,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                            
-                            <li class="main_col_3" style="height:auto">
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/166244958?viewPath=search_list&amp;clickPath=search&amp;feedPosition=32">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2020/item/04/26/16/4115312_517379_1.jpg?size=s4"
-                                            alt="더블하트 베이비 로션, 베이비 포밍워시 (클렌징젤 증정)"
-                                            class="thumbnail_img" /><label data-index="1"
-                                            style="display:none">1</label></div>
-                                        <div class="dealer_text_position">
-                                          <div class="dealer_text">전문</div>
+                          <%
+                          	for(BoardDTO b : board){
+                          		System.out.println(b.getP_image1_orig_name());
+                          	%>
+                          		<li class="main_col_3" style="height:auto">
+                                <div class="item_wrapper_card">
+                                  <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
+                                        fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
+                                        focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
+                                        stroke-linejoin="round" class="dib_img">
+                                        <path
+                                          d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
+                                          stroke-linejoin="round"></path>
+                                      </svg></button></div><a class="card card_list"
+                                    href="/HelloMarket/item/item.jsp?p_idx=<%=b.getP_idx()%>">
+                                    <div class="card_box">
+                                      <div class="image_wrapper">
+                                        <div class="image_outside">
+                                          <div class="image_centerbox"><img src="/HelloMarket/upload/img/<%=b.getP_image1_orig_name()%>"
+                                              
+                                              alt="120~130사이즈 아이옷" class="thumbnail_img" /><label data-index="0"
+                                              style="display:none">0</label></div>
+                                        
                                         </div>
                                       </div>
-                                    </div>
-                                    <div class="cont">
-                                      <div class="item_title">더블하트 베이비 로션, 베이비 포밍워시 (클렌징젤 증정)</div>
-                                      <div class="item_price">45,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                            
-                            <li class="main_col_3" style="height:auto" >
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/165069693?viewPath=search_list&amp;clickPath=search&amp;feedPosition=33">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2019/item/12/22/23/5334_2726880_1.jpg?size=s4"
-                                            alt="유모차라이너" class="thumbnail_img" /><label data-index="2"
-                                            style="display:none">2</label></div>
+                                      <div class="cont">
+                                        <div class="item_title"><%=b.getP_title() %></div>
+                                        <div class="item_price"><%=b.getP_price() %>원</div>
                                       </div>
                                     </div>
-                                    <div class="cont">
-                                      <div class="item_title">유모차라이너</div>
-                                      <div class="item_price">13,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                            <li class="main_col_3" style="height:auto">
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/166280252?viewPath=search_list&amp;clickPath=search&amp;feedPosition=34">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2020/item/04/03/08/0101081_2726880_1.jpg?size=s4"
-                                            alt="뽀로로 배변훈련변기" class="thumbnail_img" /><label data-index="3"
-                                            style="display:none">3</label></div>
-                                      </div>
-                                    </div>
-                                    <div class="cont">
-                                      <div class="item_title">뽀로로 배변훈련변기</div>
-                                      <div class="item_price">20,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                            <li class="main_col_3" style="height:auto">
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/163998418?viewPath=search_list&amp;clickPath=search&amp;feedPosition=35">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2019/item/09/28/07/5639_2726880_1.jpg?size=s4"
-                                            alt="퀴니무드(올블랙)유모차" class="thumbnail_img" /><label data-index="4"
-                                            style="display:none">4</label></div>
-                                      </div>
-                                    </div>
-                                    <div class="cont">
-                                      <div class="item_title">퀴니무드(올블랙)유모차</div>
-                                      <div class="item_price">170,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                            <li class="main_col_3" style="height:auto">
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/166349667?viewPath=search_list&amp;clickPath=search&amp;feedPosition=36">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2020/item/04/08/15/4344834_3454970_1.jpg?size=s4"
-                                            alt="아기신발" class="thumbnail_img" /><label data-index="5"
-                                            style="display:none">5</label></div>
-                                      </div>
-                                    </div>
-                                    <div class="cont">
-                                      <div class="item_title">아기신발</div>
-                                      <div class="item_price">17,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                            <li class="main_col_3" style="height:auto">
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/166632717?viewPath=search_list&amp;clickPath=search&amp;feedPosition=37">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2020/item/04/30/13/4157953_3454970_1.jpg?size=s4"
-                                            alt="에듀테이블" class="thumbnail_img" /><label data-index="6"
-                                            style="display:none">6</label></div>
-                                      </div>
-                                    </div>
-                                    <div class="cont">
-                                      <div class="item_title">에듀테이블</div>
-                                      <div class="item_price">15,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                            <li class="main_col_3" style="height:auto">
-                              <div class="item_wrapper_card">
-                                <div class="dibs_card"><button type="button"><svg viewBox="0 0 24 24"
-                                      fill="#484848" fill-opacity="0.5" stroke="#ffffff" stroke-width="2"
-                                      focusable="false" aria-label="찜하기" role="img" stroke-linecap="round"
-                                      stroke-linejoin="round" class="dib_img">
-                                      <path
-                                        d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-                                        stroke-linejoin="round"></path>
-                                    </svg></button></div><a class="card card_list"
-                                  href="/item/166393585?viewPath=search_list&amp;clickPath=search&amp;feedPosition=38">
-                                  <div class="card_box">
-                                    <div class="image_wrapper">
-                                      <div class="image_outside">
-                                        <div class="image_centerbox"><img
-                                            src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-                                            data-src="https://ccimg.hellomarket.com/images/2020/item/04/11/18/2517133_4899824_1.jpg?size=s4"
-                                            alt="써모스푸고 ,아벤트컵" class="thumbnail_img" /><label data-index="7"
-                                            style="display:none">7</label></div>
-                                      </div>
-                                    </div>
-                                    <div class="cont">
-                                      <div class="item_title">써모스푸고 ,아벤트컵</div>
-                                      <div class="item_price">10,000원</div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </div>
-                            </li>
-                           
-                            
-                        
+                                  </a>
+                                </div>
+                              </li>
+                           <% 
+                          	}
+                          %>
+               
                           </ul>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="paging">
-                    <ul>
-                      <li></li>
-                      <li class="active"><a href="/search?category=HAE0000&amp;page=1">
-                          <div class="paging_box">1</div>
-                        </a></li>
-                      <li class=""><a href="/search?category=HAE0000&amp;page=2">
-                          <div class="paging_box">2</div>
-                        </a></li>
-                      <li class=""><a href="/search?category=HAE0000&amp;page=3">
-                          <div class="paging_box">3</div>
-                        </a></li>
-                      <li class=""><a href="/search?category=HAE0000&amp;page=4">
-                          <div class="paging_box">4</div>
-                        </a></li>
-                      <li class=""><a href="/search?category=HAE0000&amp;page=5">
-                          <div class="paging_box">5</div>
-                        </a></li>
-                      <li><a href="/search?category=HAE0000&amp;page=2">
-                          <div class="paging_box"><svg viewBox="0 0 18 18" role="img" aria-label="이전"
-                              focusable="false" class="prev">
-                              <path
-                                d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z">
-                              </path>
-                            </svg></div>
-                        </a></li>
-                    </ul>
-                  </div>
+                  
                 </section>
               </div>
             </div>
@@ -997,26 +759,7 @@
       </div>
     </div>
   </div>
-<script type="text/javascript">
-      function filter(){
-
-        var value, name, item, i;
-
-        value = document.getElementById("value").value.toUpperCase();
-        item = document.getElementsByClassName("main_col_3");
-
-        for(i=0;i<item.length;i++){
-          name = item[i].getElementsByClassName("cont");
-          if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
-            item[i].style.display = "block";
-         
-          }else{
-            item[i].style.display = "none";
-          }
-        }
-        
-      }
-</script>
+<script src = "/HelloMarket/js/common.js?v=<%=System.currentTimeMillis() %>"></script>
 </body>
 
 </html>

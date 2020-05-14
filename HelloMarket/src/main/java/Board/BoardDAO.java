@@ -195,7 +195,74 @@ public class BoardDAO {
 	    	return board;
 	    }
 
- 
+	    public List<BoardDTO> showItemThisCat(String catName){
+	    	List<BoardDTO> list = new ArrayList<BoardDTO>();
+	    	Connection conn = null;
+	    	PreparedStatement pstmt = null;
+	    	ResultSet rs = null;
+	    	String sql = "SELECT p_idx,p_image1_orig_name,p_title,p_s_catagory,p_price from sellboard where p_m_catagory=? or p_s_catagory=? or p_title LIKE ?";
+	    	try {
+	    		conn = Dbconn.getConnection();
+	    		pstmt = conn.prepareStatement(sql);
+	    		pstmt.setString(1, catName);
+	    		pstmt.setString(2, catName);
+	    		pstmt.setString(3, "%"+catName+"%"); 		
+	    		rs = pstmt.executeQuery();
+	    		while(rs.next()) {
+	    			BoardDTO boardDTO = new BoardDTO();
+	    			boardDTO.setP_idx(rs.getInt("p_idx"));
+	    			boardDTO.setP_image1_orig_name(rs.getString("p_image1_orig_name"));
+	    			boardDTO.setP_title(rs.getString("p_title"));
+	    			boardDTO.setP_s_category(rs.getString("p_s_catagory"));
+	    			boardDTO.setP_price(rs.getString("p_price"));
+	    			list.add(boardDTO);
+	    		}
+	    	}catch(Exception e) {
+	    		e.printStackTrace();
+	    	}
+	    	return list;
+	    }
    
+	    public Integer updateBoard(BoardDTO boarddto) {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        int rows = 0;
+	     
+	           try {
+	
+	              conn = Dbconn.getConnection();
+	              String sql = "update sellboard set deal_m1=?, p_image1_orig_name=?, p_title=? p_m_category=?, p_s_category=?,  p_description=?  p_trade_kind=?, p_price=?, p_delivery=?, p_status1=?, p_transac_loc=? where p_idx=?";
+	              pstmt = conn.prepareStatement(sql);
+	              pstmt.setString(1, boarddto.dealstr);
+	              pstmt.setString(2, boarddto.getP_image1_orig_name());
+	              pstmt.setString(3, boarddto.getP_title());
+	              pstmt.setString(4, boarddto.getP_m_category());
+	              pstmt.setString(5, boarddto.getP_s_category());
+	              pstmt.setString(6, boarddto.getP_description());
+	              pstmt.setString(7, boarddto.getP_trade_kind());
+	              pstmt.setString(8, boarddto.getP_price());
+	              pstmt.setString(9, boarddto.deliverstr);
+	              pstmt.setString(11, boarddto.getP_status1());
+	              pstmt.setString(12, boarddto.getP_transac_loc());
+	              
+	              try (ResultSet geneResultKey = pstmt.getGeneratedKeys()){
+	                 if(geneResultKey.next()) {
+	                    boarddto.setP_idx(geneResultKey.getInt("id"));
+	                 }
+	              }
+	              rows=pstmt.executeUpdate();
+	              
+	        }catch(Exception e) {
+	           e.printStackTrace();
+	
+	        }finally {
+	           Dbconn.close(conn, pstmt);
+	        }
+	        return rows;
+	     }
+	   
+	    
+	    
+	    
    
 }

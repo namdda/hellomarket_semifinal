@@ -145,7 +145,8 @@ $(function(){
 
     	})
     })
-
+    
+   
     function init(){
         nickchange();
         profChange();

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%@page import="User.UserDTO" %>
 <%@page import="User.UserDAO" %>
+<%@page import="Board.*" %>
 
 <html lang="en">
 
@@ -15,6 +16,7 @@
 </head>
 <body class="">
 <%
+	BoardDAO boardDAO = new BoardDAO();
 	String userId = (String) session.getAttribute("userId");
 	String userNick = (String) session.getAttribute("userNick");
 	UserDAO userDAO = new UserDAO();
@@ -23,6 +25,7 @@
 	userDTO = userDAO.profile(userId);
 	int sellerLevel = userDTO.getSellerLevel();
 	int userPh = userDTO.getUserPh();
+	int itemCnt = boardDAO.showUserItemCnt(userNick);
 	String userProf = userDTO.getUserProf();
 %>
     <div id="__next" style="height: auto !important;">
@@ -242,10 +245,7 @@
                                                     src="../img/img_level_5_x2.png"
                                                     alt="뱃지 이미지"></div>
                                             <div class="my_profile_nick"><%=userNick %></div>
-                                            <div class="my_profile_shop_created">
-                                                <div class="my_profile_start_mobile">태조 2년 시작</div>
-                                                <div class="my_profile_start">태조 2년 시작</div>
-                                            </div>
+                                       
                                             <div class="my_profile_follow"><a href="/m/following">
                                                     <div class="my_profile_follow_count"><span>팔로잉</span><span>7777</span>
                                                     </div>
@@ -257,22 +257,9 @@
                                             </div>
                                             <div class="my_profile_pro_review">
                                                 <div class="my_profile_pro_review_box"><a
-                                                        href="/s/@14474743?tab=item"><span>상품</span><span>2351214</span></a>
+                                                        href="/s/@14474743?tab=item"><span>상품</span><span><%=itemCnt %></span></a>
                                                 </div>
-                                                <div class="my_profile_pro_review_box"><a
-                                                        href="/s/@14474743?tab=review"><span>거래후기</span><span>56439522341</span>
-                                                        <div class="my_profile_pro_review_rating"><img
-                                                                src="../img/img_review_star_16x16_x2.png"
-                                                                alt="프로필 별점 없는 이미지 1"><img
-                                                                src="../img/img_review_star_16x16_x2.png"
-                                                                alt="프로필 별점 없는 이미지 2"><img
-                                                                src="../img/img_review_star_16x16_x2.png"
-                                                                alt="프로필 별점 없는 이미지 3"><img
-                                                                src="../img/img_review_star_16x16_x2.png"
-                                                                alt="프로필 별점 없는 이미지 4"><img
-                                                                src="../img/img_review_star_half_16x16_x2.png"
-                                                                alt="프로필 별점 없는 이미지 5"></div>
-                                                    </a></div>
+                                               
                                             </div>
                                             <span class="my_profile_more_text" width="0">
                                             <span id="profile">

@@ -53,7 +53,6 @@
 		uploaderDTO = userDAO.getUserInfo(uploaderIdx);
 		uploaderItemCnt = boardDAO.showUserItemCnt(uploaderDTO.getUserNick());
 		uploaderItems = boardDAO.showUserItem(uploaderDTO.getUserNick());
-		
 	}
 	
 %>
@@ -284,7 +283,9 @@
                             <h2> 회원프로필 영역</h2>
                             <%
                             	if(uploaderIdx != 0){
+                            		
                            	%>
+                           	
                             		<div class="my_profile_left">
                                     <div class="my_profile_info">
                                         <div class="my_profile_image"><img
@@ -293,12 +294,18 @@
                                                 src="../img/img_level_5_x2.png"
                                                 alt="뱃지 이미지"></div>
                                         <div class="my_profile_nick"><%=uploaderDTO.getUserNick() %></div>
-                                        <div class="my_profile_shop_created">
-                                            <div class="my_profile_start_mobile">태조 2년 시작</div>
-                                            <div class="my_profile_shop"><a href="/m/profile"><button
-                                                        type="button">상점주소생성</button></a></div>
-                                            <div class="my_profile_start">태조 2년 시작</div>
-                                        </div>
+                                       <%
+                                       		if(!userNick.equals(uploaderDTO.getUserNick())){
+                                       	%>
+                                       			<div class="my_profile_follow_box">
+                                       		    <div class="my_profile_follow_info">
+                                       		        <div class="follow_info_box"><img src="https://ccimage.hellomarket.com/web/2019/member/ico_hellotlak_14x14_x2.png" alt="상점 헬로톡 이미지"><span>헬로톡</span></div>
+                                       		        <div class="follow_info_box follow_info_blue" onclick= "following('<%=userNick%>','<%=uploaderDTO.getUserNick()%>')"><img src="https://ccimage.hellomarket.com/web/2019/member/ico_plus_14x14_x2.png" alt="상점 팔로우 이미지" class="follower_image"><span>팔로워</span></div>
+                                       		    </div>
+                                       		</div>
+                                       <%		
+                                       		}
+                                       %>
                                         <div class="my_profile_follow"><a href="/m/following">
                                                 <div class="my_profile_follow_count"><span>팔로잉</span><span><%=uploaderDTO.getUserFollowing() %></span></div>
                                             </a>
@@ -362,12 +369,7 @@
                                             src="../img/img_level_5_x2.png"
                                             alt="뱃지 이미지"></div>
                                     <div class="my_profile_nick"><%=userNick %></div>
-                                    <div class="my_profile_shop_created">
-                                        <div class="my_profile_start_mobile">태조 2년 시작</div>
-                                        <div class="my_profile_shop"><a href="/m/profile"><button
-                                                    type="button">상점주소생성</button></a></div>
-                                        <div class="my_profile_start">태조 2년 시작</div>
-                                    </div>
+                                  
                                     <div class="my_profile_follow"><a href="/m/following">
                                             <div class="my_profile_follow_count"><span>팔로잉</span><span>7777</span></div>
                                         </a>
@@ -615,6 +617,6 @@
     </div>
 </body>
 <script src="../js/common.js?v=<%=System.currentTimeMillis() %>"></script>
-<script src="../js/mystore_index.js"></script>
+<script src="../js/mystore_index.js?v=<%=System.currentTimeMillis() %>"></script>
 
 </html>

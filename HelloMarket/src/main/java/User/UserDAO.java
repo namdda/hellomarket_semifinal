@@ -297,4 +297,34 @@ public class UserDAO {
 		return userDTO;
 		
 	}
+	public void following(String myNick,String yourNick) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO userlist(user_follower) values(?) where user_nick=?";
+		try {
+			conn =Dbconn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, yourNick);
+			pstmt.setString(2, myNick);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		sql = "INSERT INTO userlist(user_following) values(?) where user_nick=?";
+		try {
+			conn = Dbconn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, myNick);
+			pstmt.setString(2, yourNick);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cancelFollow(String myNick,String yourNick) {
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		String sql = "DELETE from userlist where user";
+	}
 }

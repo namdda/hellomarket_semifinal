@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="myboardDTO" class="Board.MyBoardDTO"/>
-<jsp:setProperty property="*" name="MyboardDTO"/>
-<jsp:useBean id="myboardDAO" class="Board.MyBoardDAO"/>
+<jsp:useBean id="boardDTO" class="Board.BoardDTO"/>
+<jsp:setProperty property="*" name="boardDTO"/>
+<jsp:useBean id="boardDAO" class="Board.BoardDAO"/>
 <%@ page import ="User.*" %>
 <%
 
@@ -10,6 +10,7 @@
 String temp = request.getParameter("p_idx");
 int p_idx = Integer.parseInt(temp);
 System.out.println(p_idx);
+//boardDTO = boardDAO.updateBoard(p_idx);
 %>
     
 <!DOCTYPE html>
@@ -287,7 +288,7 @@ System.out.println(p_idx);
                 <div>상품 수정</div>
               </div>
             </div>
-   <form method="post" action="my_sell_ok.jsp" enctype="multipart/form-data">
+   <form method="post" action="modify_ok.jsp" enctype="multipart/form-data">
             <div class="regist_box">
               <div class="description">
                 <dl id="mainDiv">

@@ -112,8 +112,9 @@
           <div class="header_search" id="tebas">
             <div class="com_search_box">
                 <div>
-                    <div><input type="text" class="com_search" placeholder="어떤 상품을 찾고 계세요?" value=""
+                    <div><input type="text" class="com_search" placeholder="어떤 상품을 찾고 계세요?"  value=""
                             style="border-bottom: 1px solid rgb(158, 164, 170);">
+                           
                         <div class="search_icon_box">
                             <div class="search_icon">
                                 <div class="search_circle" style="border-color: rgb(158, 164, 170);"></div>
@@ -190,16 +191,16 @@
                       <li class="cat_space"><a></a></li>
                       <li class="cat_space"><a></a></li>
                       <li class="cat_space"><a></a></li>
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0000"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0000"><img
                             src="/HelloMarket/img/cate_hak0000.png" alt="휴대폰, 테블릿" class="category_img"><span
                             class="category_text">휴대폰, 테블릿</span></a></li>
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0001"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0001"><img
                             src="/HelloMarket/img/cate_had0000.png" alt="뷰티" class="category_img"><span
                             class="category_text">뷰티</span></a></li>
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0002"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0002"><img
                             src="/HelloMarket/img/cate_haa0000.png" alt="여성의류" class="category_img"><span
                             class="category_text">여성의류</span></a></li>
-                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAK0003"><img
+                      <li class="category"><a class="cat_link" href="/HelloMarket/search/search.jsp?category=HAC0003"><img
                             src="/HelloMarket/img/cate_hac0000.png" alt="신발,가방,잡화" class="category_img"><span
                             class="category_text">신발,가방,잡화</span></a></li>
                       <li class="category_blank"></li>
@@ -278,17 +279,17 @@
                 <div class="swiper-wrapper" id="banner" style="transform: translate3d(0px,0px,0px); transition-duration: 0ms;">
                   <div class="swiper-slide swiper-slide-active" style="width: 980px;">
                     <a href="" target="_blank">
-                      <img src="img/banner_1.png" class="main_img">
+                      <img src="img/mainSlide01.png" class="main_img">
                     </a>
                   </div>
                   <div class="swiper-slide swiper-slide-next" style="width: 980px;">
                     <a href="" target="_blank">
-                      <img src="img/banner_2.png" class="main_img">
+                      <img src="img/mainSlide02.png" class="main_img">
                     </a>
                   </div>
                   <div class="swiper-slide swiper-slide-next-next" style="width: 980px;">
                     <a href="" target="_blank">
-                      <img src="img/banner_3.png" class="main_img">
+                      <img src="img/mainSlide03.png" class="main_img">
                     </a>
                   </div>
                 </div>
