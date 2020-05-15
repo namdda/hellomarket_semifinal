@@ -511,15 +511,16 @@
 												                </div>
 												            </li>
 												         
-												            <li><a href="/item/form.hm?idx=166099896" >
-												                    <div class="modify_box_right_border" onclick="/HelloMarket/modify/modify.jsp?p_idx=<%= p_idx %> ><img src="https://ccimage.hellomarket.com/web/2019/item/ico_myproduct_edit.png" alt="수정 이미지" class="modify_box_right_img">
-												                        <div class="modify_box_right_text">수정</div> <!-- onclick="/HelloMarket/modify/modify.jsp?id=${board.id}" 지금 생각해보니까 어느 페이지 수정하는건지 모르니까 그걸 get 방식으로 받아야할거 같은데...  -->
+												            <li><a href="/HelloMarket/modify/modify.jsp?p_idx=<%= p_idx %> " >
+												                    <div class="modify_box_right_border"><img src="https://ccimage.hellomarket.com/web/2019/item/ico_myproduct_edit.png" alt="수정 이미지" class="modify_box_right_img">
+												                        <div class="modify_box_right_text">수정</div>
 												                    </div>
 												                </a></li>
-												            <li class="modify_mobile_delete_right">
+												            <li class="modify_mobile_delete_right"><a href="/HelloMarket/Delete.jsp?p_idx=<%=p_idx %>">
 												                <div class="modify_box_right_border"><img src="https://ccimage.hellomarket.com/web/2018/item/ico_myitem_edit_item_x4.png" alt="상품 수정" class="modify_box_right_img">
 												                    <div class="modify_box_right_text">삭제</div>
 												                </div>
+												                </a>
 												            </li>
 												        </ul>
 												    </div>

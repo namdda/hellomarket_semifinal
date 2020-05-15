@@ -229,25 +229,55 @@ public class BoardDAO {
 	        int rows = 0;
 	     
 	           try {
-	
+	        	   System.out.println(boarddto.toString());
 	              conn = Dbconn.getConnection();
-	              String sql = "update sellboard set deal_m1=?, p_image1_orig_name=?, p_title=? p_m_category=?, p_s_category=?,  p_description=?  p_trade_kind=?, p_price=?, p_delivery=?, p_status1=?, p_transac_loc=? where p_idx=?";
+	              String sql = "update sellboard set deal_m1=?,p_image1_path=?, p_image1_orig_name=?, p_title=?, p_m_catagory=?, p_s_catagory=?,  p_description=?,  p_trade_kind=?, p_price=?, p_delivery=?, p_status1=?, p_transac_loc=? where p_idx=?";
 	              pstmt = conn.prepareStatement(sql);
 	              pstmt.setString(1, boarddto.dealstr);
-	              pstmt.setString(2, boarddto.getP_image1_orig_name());
-	              pstmt.setString(3, boarddto.getP_title());
-	              pstmt.setString(4, boarddto.getP_m_category());
-	              pstmt.setString(5, boarddto.getP_s_category());
-	              pstmt.setString(6, boarddto.getP_description());
-	              pstmt.setString(7, boarddto.getP_trade_kind());
-	              pstmt.setString(8, boarddto.getP_price());
-	              pstmt.setString(9, boarddto.deliverstr);
+	              pstmt.setString(2, boarddto.getP_image1_path());
+	              pstmt.setString(3, boarddto.getP_image1_orig_name());
+	              pstmt.setString(4, boarddto.getP_title());
+	              pstmt.setString(5, boarddto.getP_m_category());
+	              pstmt.setString(6, boarddto.getP_s_category());
+	              pstmt.setString(7, boarddto.getP_description());
+	              pstmt.setString(8, boarddto.getP_trade_kind());
+	              pstmt.setString(9, boarddto.getP_price());
+	              pstmt.setString(10, boarddto.deliverstr);
 	              pstmt.setString(11, boarddto.getP_status1());
 	              pstmt.setString(12, boarddto.getP_transac_loc());
+	              pstmt.setInt(13, boarddto.getP_idx());
+	              
+//	              String[] deliver = rs.getString("p_delivery").split(" "); //length 만큼 보여주게 하기... 
+//	    			boardDTO.setP_delivery(deliver);
+//	    			
+//	    			String[] deal = rs.getString("deal_m1").split(" ");
+//	    			boardDTO.setDeal_m1(deal); // 뭐 어떻게 넣기는 했는데 그 다음에 어떻게 해야할지 모르겠따
+	              
+//	              	boardDTO.setP_image1_orig_name(rs.getString("p_image1_orig_name"));
+//	    			boardDTO.setP_title(rs.getString("p_title"));
+//	    			boardDTO.setP_price(rs.getString("p_price"));
+//	    			boardDTO.setP_description(rs.getString("p_description"));
+//	    			boardDTO.setUserNick(rs.getString("user_nick"));
+//	    			userNick = rs.getString("user_nick");
+//	    			boardDTO.setP_regist_date(rs.getString("p_regist_date"));
+//	    			boardDTO.setP_transac_loc(rs.getString("p_transac_loc"));
+//	    			boardDTO.setP_m_category(rs.getString("p_m_catagory"));
+//	    			boardDTO.setP_s_category(rs.getString("p_s_catagory"));
+//	    			boardDTO.setP_status1(rs.getString("p_status1"));
+//	    			boardDTO.setP_like(rs.getInt("p_like"));
+//	    			
+//			        String[] deliver = rs.getString("p_delivery").split(" "); //length 만큼 보여주게 하기... 
+//	    			boardDTO.setP_delivery(deliver);
+//	    			
+//	    			String[] deal = rs.getString("deal_m1").split(" ");
+//	    			boardDTO.setDeal_m1(deal); // 뭐 어떻게 넣기는 했는데 그 다음에 어떻게 해야할지 모르겠따 
+	              
+	              //아무리 봐도 get이 맞는거 같은데
+	              
 	              
 	              try (ResultSet geneResultKey = pstmt.getGeneratedKeys()){
 	                 if(geneResultKey.next()) {
-	                    boarddto.setP_idx(geneResultKey.getInt("id"));
+	                    boarddto.setP_idx(geneResultKey.getInt("p_idx"));
 	                 }
 	              }
 	              rows=pstmt.executeUpdate();
@@ -259,10 +289,28 @@ public class BoardDAO {
 	           Dbconn.close(conn, pstmt);
 	        }
 	        return rows;
+	        
+	        
 	     }
-	   
-	    
-	    
+	      
+	      public Integer DeleteBoard(int p_idx){
+	    	  
+	       Connection conn = null;
+	       PreparedStatement pstmt = null;
+	       int rows = 0;
+	       try{//실행
+	    	   System.out.println(p_idx);
+	          conn = Dbconn.getConnection();
+	           String sql = "DELETE from sellboard WHERE p_idx=?";
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setInt(1, p_idx);
+	            rows = pstmt.executeUpdate();
+	            
+	       }catch(Exception e) {
+	           e.printStackTrace();
+	        }
+	       return rows;
+	     }
 	    
    
 }
