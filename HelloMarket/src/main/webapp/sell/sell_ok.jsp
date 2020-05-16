@@ -7,6 +7,7 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 
+
 <!-- 여기까지는 upload_ok에도 있었던 것 -->
 
 <%@page import="Board.BoardDTO" %>
@@ -16,8 +17,10 @@
 
 <%
     String userNick = (String)session.getAttribute("userNick");	
-
-	String realName="";
+	
+ 	
+	
+ 	String realName="";
 	int maxSize = 10 * 1024 * 1024; // 10MB
 	String savePath = "C:/Users/Dawon/git/hellomarket_semifinal/HelloMarket/src/main/webapp/upload/img";
 	System.out.println("현재경로 : " + savePath);
@@ -35,10 +38,11 @@
 		
 		System.out.println(uploadFile);
 	
-		File file1 = new File(savePath + uploadFile);
+		File file =new File(savePath + uploadFile);
 		
-		response.sendRedirect("/HelloMarket/Main.jsp"); // 메인으로 가나 보자 (이거 이제 나중에 제품 리스트로 가는 걸로 바꿔요)
+		//fs.fileUpload(name, file);
 		
+		response.sendRedirect("/HelloMarket/Main.jsp");
 		
 		 request.setCharacterEncoding("UTF-8");
 		   BoardDTO boarddto = new BoardDTO();

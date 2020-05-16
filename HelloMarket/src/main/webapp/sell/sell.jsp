@@ -485,7 +485,7 @@
                           <div class="up_img_box" id="">
                           <input type="file" id="fileflow01" name="fileflow01" /> <!--  얘도 이름 맞는데 -->
                           <input type="hidden" id="p_image1_orig_name" name="p_image1_orig_name"/> <!--  얘도 이름 맞는데 -->
-                          
+                          <input type="hidden" id="p_image1_path" name="p_image1_path">
                           <img src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png" id="img_first" class="item_img" alt="상품 등록 이미지"/>
                           </div>
                         </li>

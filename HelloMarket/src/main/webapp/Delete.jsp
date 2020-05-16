@@ -24,8 +24,8 @@
 System.out.println(num);
 %>
 	<script>
-		//alert("게시글 삭제 실패");
-		//history.back();
+		alert("게시글 삭제 실패");
+		history.back();
 	</script>
 <% } %>
 

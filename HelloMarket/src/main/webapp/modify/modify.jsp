@@ -7,13 +7,14 @@
 
 <%
 
-//int p_idx = request.getParameter("p_idx");
+
 String temp = request.getParameter("p_idx");
 int p_idx = Integer.parseInt(temp);
 System.out.println(p_idx);
-//boardDTO = boardDAO.updateBoard(p_idx);
+
 %>
-    
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -290,6 +291,7 @@ System.out.println(p_idx);
               </div>
             </div>
    <form method="post" action="modify_ok.jsp" enctype="multipart/form-data">
+   <input type="hidden" name="p_idx" value="<%=p_idx%>"> 
             <div class="regist_box">
               <div class="description">
                 <dl id="mainDiv">
@@ -317,7 +319,8 @@ System.out.println(p_idx);
                           <div class="up_img_box" id="">
                           <input type="file" id="fileflow01" name="fileflow01" /> <!--  얘도 이름 맞는데 -->
                           <input type="hidden" id="p_image1_orig_name" name="p_image1_orig_name"/> <!--  얘도 이름 맞는데 -->
-                          
+                           <input type="hidden" id="p_image1_path" name="p_image1_path">
+                           
                           <img src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png" id="img_first" class="item_img" alt="상품 등록 이미지"/>
                           </div>
                         </li>
@@ -464,7 +467,7 @@ System.out.println(p_idx);
                 <div class="item_area_submit_box"><a href="/"><button class="btn_item_cancel"
                       type="button">취소</button></a><button class="btn_item_mobile_cancel"
                     type="button">삭제</button>
-                    <input type="submit" class="btn_item_submit" value="등록완료">
+                    <input type="submit" class="btn_item_submit" value="수정완료">
                	</div>
               </div>
             </div>

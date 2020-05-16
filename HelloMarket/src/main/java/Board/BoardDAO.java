@@ -275,11 +275,11 @@ public class BoardDAO {
 	              //아무리 봐도 get이 맞는거 같은데
 	              
 	              
-	              try (ResultSet geneResultKey = pstmt.getGeneratedKeys()){
-	                 if(geneResultKey.next()) {
-	                    boarddto.setP_idx(geneResultKey.getInt("p_idx"));
-	                 }
-	              }
+//	              try (ResultSet geneResultKey = pstmt.getGeneratedKeys()){
+//	                 if(geneResultKey.next()) {
+//	                    boarddto.setP_idx(geneResultKey.getInt("p_idx"));
+//	                 }
+//	              }
 	              rows=pstmt.executeUpdate();
 	              
 	        }catch(Exception e) {
