@@ -12,7 +12,12 @@
 		BoardDAO boardDAO = new BoardDAO();
 		//boardDAO.DeleteBoard(p_idx);
 %>
-<%    int num = boardDAO.DeleteBoard(p_idx); 
+<%  
+	int like = boardDAO.DeleteLike(p_idx);
+	int num = boardDAO.DeleteBoard(p_idx); 
+
+	if(like >=1 ){
+		
 
 	if(num >=  1){
 %>
@@ -27,5 +32,7 @@ System.out.println(num);
 		alert("게시글 삭제 실패");
 		history.back();
 	</script>
-<% } %>
+<% } 
+	}
+%>
 

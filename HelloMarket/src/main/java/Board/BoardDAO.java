@@ -293,6 +293,25 @@ public class BoardDAO {
 	        
 	     }
 	      
+	    public Integer DeleteLike(int p_idx){
+	    	  
+		       Connection conn = null;
+		       PreparedStatement pstmt = null;
+		       int rows = 0;
+		       try{//실행
+		    	   System.out.println(p_idx);
+		          conn = Dbconn.getConnection();
+		           String sql = "DELETE from like_item WHERE p_idx=?";
+		            pstmt = conn.prepareStatement(sql);
+		            pstmt.setInt(1, p_idx);
+		            rows = pstmt.executeUpdate();
+		            
+		       }catch(Exception e) {
+		           e.printStackTrace();
+		        }
+		       return rows;
+		     }
+	    
 	      public Integer DeleteBoard(int p_idx){
 	    	  
 	       Connection conn = null;
