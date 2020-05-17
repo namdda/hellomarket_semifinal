@@ -33,6 +33,21 @@ System.out.println(num);
 		history.back();
 	</script>
 <% } 
+	}else{
+		if(num >=  1){
+			%>
+				<script>
+					alert("게시글 삭제 성공");
+					location.href="/HelloMarket/Main.jsp";
+				</script>
+			<%}else{ 
+			System.out.println(num);
+			%>
+				<script>
+					alert("게시글 삭제 실패");
+					history.back();
+				</script>
+			<% } 
 	}
 %>
 
